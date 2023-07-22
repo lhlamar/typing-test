@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Lucas' Typing Speed Test</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+ 
+
+  <!-- This way of using hreflang Doesn't work well with search engines because
+the default page uses Accept-Language, and they apparently don't really support
+that. Suggestions welcome! aoeu@aoeu.nl
+<link rel=alternate hreflang=nl href="https://typing-speed-test.aoeu.eu/?lang=nl">
+<link rel=alternate hreflang=en href="https://typing-speed-test.aoeu.eu/?lang=en">
+<link rel=alternate hreflang=x-default href="https://typing-speed-test.aoeu.eu/">
+-->
+<link rel="stylesheet" href="utils.css"/>
+<link rel="stylesheet" href="style.css"/>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+
+ 
+
+
+  <script src="text.js" type="text/javascript"></script>
+
+ 
+</head>
+<body>
+    <div class="appContainer">
+  <div id="left">&nbsp;</div>
+      <div class="testui">
+        <div id="border">
+          <div id="score">
+            <div style="display: none">
+              <span>Raw CPM:&nbsp;</span> <span id="rawcpm">?</span>
+            </div>
+            <span id="highscore" style="display: none"
+              ><span>Your best:</span> <span id="highcpm">?</span></span
+            >
+            <span>&nbsp;Corrected CPM:&nbsp;</span> <span id="cpm">?</span>
+            <span>&nbsp;WPM:&nbsp;</span> <span id="wpm">?</span>
+            <span>&nbsp;Time left:&nbsp;</span> <span id="timer">60</span>
+            
+          </div>
+          <div id="wordsbox">
+            <div id="words-outer">
+              <div id="words" onclick="el('input').focus();"></div>
+            </div>
+            <input
+              id="input"
+              onkeydown="$speedtest.keydown(this, event);"
+              onkeyup="$speedtest.keypress(this, event);"
+              autocomplete="off"
+              autocapitalize="none"
+              spellcheck="false"
+              autocorrect="off"
+              placeholder="start typing here"
+            />
+          </div>
+        </div>
+        <p>
+          <script>
+            function store_score(cpm, wrong) {
+              var s = read_scores(),
+                now = new Date().toISOString();
+              s.push({ datetime: now, cpm: cpm, wrong: wrong });
+              if (!JSON || !JSON.stringify) return false;
+              if (!window.localStorage) return false;
+              localStorage["scores"] = JSON.stringify(s);
+              return !!localStorage["scores"];
+            }
+
+            function read_scores() {
+              var json = localStorage["scores"];
+              if (!json) return [];
+              if (!JSON || !JSON.parse) return [];
+              if (!window.localStorage) return [];
+              var s = JSON.parse(json);
+              if (typeof s != "object") return [];
+              return s;
+            }
+
+           
+          </script>
+        </p>
+        <div class="btn hover-btn"><a class="restart-btn" href="/?lang=en" target="_top">Restart</a></div>
+</body>
+

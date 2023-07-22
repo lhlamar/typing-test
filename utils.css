@@ -1,0 +1,39 @@
+:root {
+  --clr-dark: #2f4858;
+  --clr-correct: #32de8a;
+  --clr-incorrect: #fd4f44;
+  --clr-blue: #2f4858;
+  --clr-curr-word: #7791d1;
+  --clr-input: #9590c3;
+  --clr-result: #00d8ff;
+  --clr-word: #bffbff;
+  --clr-curr-word-correct: #207e50;
+  --clr-purple: #9590c3;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  background-color: var(--clr-blue);
+  color: #fde8e9;
+  padding: 0.7em;
+  border-radius: 6px;
+  box-shadow:
+    0 10px 20px rgb(149, 144, 195, 0.5),
+    0 6px 6px rgb(149, 144, 195, 0.5),
+    0 0 100px -10px var(--clr-blue);
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  text-align: center;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 14px 28px rgb(149, 144, 195, 0.25),
+    0 10px 10px rgb(149, 144, 195, 0.25),
+    0 0 120px -10px var(--clr-blue);
+}
