@@ -424,7 +424,7 @@ $speedtest.after_keypress = function ($value) {
 };
 
 $speedtest.ticktock = function () {
-  var $remaining = Math.ceil(10 - (time() - this.starttime));
+  var $remaining = Math.ceil(60 - (time() - this.starttime));
   if ($remaining <= 0) {
     clearInterval(this.interval_id);
     $remaining = "finish word";
